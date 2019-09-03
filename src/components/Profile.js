@@ -4,14 +4,13 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import {Link} from 'react-router-dom';
 import dayjs from 'dayjs';
 import EditDetails from './EditDetails';
+import MyButton from '../util/MyButton';
 
 // MUI Stuff
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import MuiLink from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from "@material-ui/core/Tooltip";
 
 //Icons
 import LocationOn from '@material-ui/icons/LocationOn';
@@ -95,11 +94,9 @@ class Profile extends Component {
                     <div className="image-wrapper">
                         <img src={imageUrl} alt="profile" className="profile-image" />
                         <input hidden="hidden" type="file" id="imageInput" onChange={this.handleImageChange} />
-                        <Tooltip title="Edit profile picture" placement="top">
-                            <IconButton onClick={this.handleEditPicture} className="button">
-                                <EditIcon color="primary"></EditIcon>
-                            </IconButton>
-                        </Tooltip>
+                        <MyButton tip="Edit profile picture" onClick={this.handleEditPicture} btnClassName="button">
+                            <EditIcon color="primary" />
+                        </MyButton>
                     </div>
                     <hr />
                     <div className="profile-details">
@@ -127,11 +124,9 @@ class Profile extends Component {
                         <CalendarToday color="primary" />{' '}
                         <span>Joined {dayjs(createdAt).format('MM YYYY')}</span> 
                     </div>
-                    <Tooltip title="Logout" placement="top">
-                        <IconButton onClick={this.handleLogout}>
+                    <MyButton tip="Logout" onClick={this.handleLogout}>
                             <KeyboardReturn color="primary" />
-                        </IconButton>
-                    </Tooltip>
+                    </MyButton>
                     <EditDetails />
                 </div>
             </Paper>
