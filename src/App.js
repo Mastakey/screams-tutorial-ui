@@ -17,6 +17,7 @@ import AuthRoute from './util/AuthRoute';
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
+import user from './pages/user';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
@@ -35,7 +36,7 @@ if (token){
     window.location.href = '/';
   }
   else {
-    store.dispatch({ type: SET_AUTHENTICATED });
+    store.dispatch({ type: SET_AUTHENTICATED }); 
     axios.defaults.headers.common['Authorization'] = token;
     store.dispatch(getUserData());
   }
@@ -52,6 +53,8 @@ function App() {
             <Route exact path="/" component={home} />
             <AuthRoute exact path="/login" component={login} />
             <AuthRoute exact path="/signup" component={signup} />
+            <Route exact path="/users/:handle" component={user} />
+            <Route exact path="/users/:handle/scream/:screamId" component={user} />
           </Switch>
           </div>
         </Router>
